@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import './index.css';
+import CustomModal from './components/Model';
 
 
 const tasks = [
@@ -33,21 +34,31 @@ const tasks = [
 
 
 
-class App extends Component {
+class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      viewCompleted:false,
+      modal: false,
+      viewCompleted: false,
+      activeItem: {
+        title: "",
+        description: "",
+        completed: false
+      },
       taskList: tasks,
     }
   }
 
+  // Create toggle property
+ 
+
+
 
   displayCompleted = status => {
     if (status){
-      return this.setstatus({viewCompleted: true})
+      return this.setState({viewCompleted: true})
     }
-    return this.setstatus({viewCompleted: false})
+    return this.setState({viewCompleted: false})
   }
 
   renderTabList = () => {
@@ -101,10 +112,6 @@ class App extends Component {
 
 
 
-
-
-
-
   
   render() {
     return (
@@ -128,11 +135,7 @@ class App extends Component {
       </main>
     )
   }
+}  
 
-
-
-
-
-}
 
 export default App;
