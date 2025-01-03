@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css';
+import { Modal } from 'reactstrap';
 import './index.css';
 import CustomModal from './components/Model';
 
@@ -50,7 +50,26 @@ class App extends Component{
   }
 
   // Create toggle property
- 
+  toggle = () => {
+    this.setState({modal: !this.state.modal});
+  };
+
+  handleSubmit = item => {
+    this.toggle()
+    alert("Saved!" + JSON.stringify(item))
+  }
+  handleDelete = item => {
+       alert("Deleted!" + JSON.stringify(item))
+  }
+
+  createItem = () => {
+    const item = {title: "", modal: !this.state.modal }
+    this.setState({activeItem: item, modal: !this.state.modal})
+  }
+
+  editItem = item => {
+    this.setState({activeItem: item, modal: !this.state.modal})
+  }
 
 
 
@@ -115,8 +134,8 @@ class App extends Component{
   
   render() {
     return (
-      <main className='context'>
-        <h1 className='text-black text-uppercase text-center my-4'>Task Manager</h1>
+      <main className='context p-3 mb-2 bg-info'>
+        <h1 className='text-white text-uppercase text-center my-4'>Task Manager</h1>
           <div className='row'>
             <div className='col-md-6 col-sma-10 mx-auto p-0'>
               <div className='card p-3'>
@@ -132,6 +151,10 @@ class App extends Component{
               </div>
             </div>
           </div>
+          <footer className='my-3 mb-2 bg-info text-white text-center' > Copyright 2024 &copy; All Rights Reserved</footer>
+          {this.state.modal ? (
+            <Modal activeItem = {this.state.activeItem} toggle={this.toggle} onSave={this.handleSubmit} />
+          ) : null }
       </main>
     )
   }

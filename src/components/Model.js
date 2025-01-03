@@ -37,7 +37,7 @@ render() {
             <ModalHeader toggle={toggle}>Task Item</ModalHeader>
             <ModalBody>
 
-                <form>
+                <Form>
                     <FormGroup>
                         {/* Title */}
                         <label for='title'>Title</label>
@@ -76,12 +76,12 @@ render() {
                         </label>
                     </FormGroup>
 
-                </form>
+                </Form>
             </ModalBody>
             <ModalFooter>
-                <buton color='success' onClick={(this.state.activeItem)} >
+                <Button color='success' onClick={(this.state.activeItem)} >
                     Save
-                </buton>
+                </Button>
             </ModalFooter>
          </Modal>
     )   
